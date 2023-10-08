@@ -1,0 +1,27 @@
+.detail {
+  text-align: "center";
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+}
+
+.detailImg {
+  width: 90vw;
+  height: 25vh;
+}
+
+@media (min-width: 700px) {
+  .detailImg {
+    max-width: 650px;
+    height: 25rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .detailImg {
+    max-width: 1200px;
+    height: 50rem;
+  }
+}
