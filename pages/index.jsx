@@ -1,5 +1,6 @@
 import MeetupList from "@/components/meetups/MeetupList";
 import Head from "next/head";
+import MongoDB from "./api/mongo-db";
 
 const Home = (props) => {
   return (
@@ -20,9 +21,8 @@ const Home = (props) => {
 // requests and the search engines can see
 
 export async function getStaticProps() {
-  const meetups = await fetch("http://localhost:3000/api/meetups-fetch");
-  const json = await meetups.json();
-  return { props: json, revalidate: 60 };
+  const meetups = await MongoDB.getMeetups();
+  return { props: { meetups: meetups }, revalidate: 60 };
 }
 
 // Runs with every incoming request on the server side to pre-render it,

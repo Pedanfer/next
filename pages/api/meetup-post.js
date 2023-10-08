@@ -1,4 +1,3 @@
-// /api/new-meetup
 import MongoDB from "./mongo-db";
 
 // Everything here is run server side so we can deal with sensitive data like credentials
