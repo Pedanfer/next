@@ -22,7 +22,7 @@ const Home = (props) => {
 
 export async function getStaticProps() {
   const meetups = await MongoDB.getMeetups();
-  return { props: { meetups: meetups }, revalidate: 60 };
+  return { props: { meetups: meetups }, revalidate: 5 };
 }
 
 // Runs with every incoming request on the server side to pre-render it,
