@@ -1,6 +1,6 @@
 import MeetupList from "@/components/meetups/MeetupList";
 import Head from "next/head";
-import MongoDB from "./api/mongo-db";
+import MongoDB from "./api/mongo-db.ts";
 
 const Home = (props) => {
   return (

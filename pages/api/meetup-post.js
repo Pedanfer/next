@@ -1,4 +1,4 @@
-import MongoDB from "./mongo-db";
+import MongoDB from "./mongo-db.ts";
 
 // Everything here is run server side so we can deal with sensitive data like credentials
 
