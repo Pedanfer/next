@@ -5,33 +5,44 @@ const url =
 
 export default class MongoDB {
   static async getMeetups() {
-    const client = await MongoClient.connect(url);
-    const meetups = await client.db().collection("meetups").find().toArray();
-    const meetupList = meetups.map((m) => {
-      const { _id, ...rest } = m;
-      return { id: _id.toString(), ...rest };
+    const result = await this.doWithCollection(async (col) => {
+      const meetups = await col.find().toArray();
+      return meetups.map((m) => {
+        const { _id, ...rest } = m;
+        return { id: _id.toString(), ...rest };
+      });
     });
-    client.close();
-    return meetupList;
+    return result;
   }
 
   static async getMeetup(meetupId) {
-    const client = await MongoClient.connect(url);
-    const meetup = await client
-      .db()
-      .collection("meetups")
-      .findOne({ _id: new ObjectId(meetupId) });
+    const result = await this.doWithCollection(async (col) => {
+      const meetup = await col.findOne({ _id: new ObjectId(meetupId) });
+      const { _id, ...rest } = meetup!;
+      return { id: _id.toString(), ...rest };
+    });
 
-    const { _id, ...rest } = meetup!;
-    client.close();
-    return { id: _id.toString(), ...rest };
+    return result;
   }
 
   static async addMeetup(meetup) {
-    const client = await MongoClient.connect(url);
-    const collection = client.db().collection("meetups");
-    const result = await collection.insertOne(meetup);
-    client.close();
+    const result = await this.doWithCollection(
+      async (col) => await col.insertOne(meetup)
+    );
     return result;
+  }
+
+  private static async doWithCollection(
+    callback: (collection) => Promise<any>
+  ) {
+    try {
+      const client = await MongoClient.connect(url);
+      const collection = await client.db().collection("meetups");
+      const result = await callback(collection);
+      client.close();
+      return result;
+    } catch (e) {
+      return e;
+    }
   }
 }
