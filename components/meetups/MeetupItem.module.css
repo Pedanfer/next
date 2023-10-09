@@ -1,5 +1,8 @@
 .item {
   margin: 1rem 0;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .image {
