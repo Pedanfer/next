@@ -3,7 +3,7 @@
 }
 
 .image {
-  width: 100%;
+  width: 40rem;
   height: 30rem;
   overflow: hidden;
   border-top-right-radius: 6px;
@@ -43,4 +43,11 @@
 .actions button:hover,
 .actions button:active {
   background-color: #ffe2ed;
+}
+
+@media (max-width: 700px) {
+  .image {
+    height: 15rem;
+    width: 20rem;
+  }
 }

@@ -43,3 +43,56 @@
   background-color: #a50e48;
   border-color: #a50e48;
 }
+
+@media (min-width: 1200px) {
+  .form {
+    padding: 1rem;
+  }
+
+  .control {
+    margin-bottom: 1rem;
+  }
+
+  .control label {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .control input,
+  .control textarea {
+    padding: 0.5rem;
+  }
+
+  .actions {
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 1600px) {
+  .form {
+    padding: 1.5rem;
+  }
+
+  .control {
+    margin-bottom: 2rem;
+  }
+
+  .control label {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .control input,
+  .control textarea {
+    padding: 2rem;
+  }
+
+  .actions {
+    margin-top: 3rem;
+  }
+
+  .actions button {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+}

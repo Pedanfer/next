@@ -5,6 +5,9 @@
   flex-direction: column;
   justify-content: center;
   height: 80vh;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .detailImg {
